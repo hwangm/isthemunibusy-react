@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Typography } from '@material-ui/core';
 
-export default function FeatureTest() {
+export default function FeatureTestVariant() {
   return (
     <Container maxWidth="lg">
       <Typography variant="h2" gutterBottom>
-        Feature Tests live here
+        Feature test variants live here
       </Typography>
     </Container>
   )

@@ -7,19 +7,20 @@ import {
 } from "react-router-dom";
 import Nav from './components/Nav';
 import FeatureTest from './components/FeatureTest';
+import FeatureTestVariant from './components/FeatureTestVariant';
+import UserVariant from './components/UserVariant';
 
 export default function App() {
   return (
     <Router>
       <div>
         <Nav />
-
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/user-variants">
+            <UserVariant />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/variants">
+            <FeatureTestVariant />
           </Route>
           <Route path="/">
             <FeatureTest />
@@ -28,12 +29,4 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }

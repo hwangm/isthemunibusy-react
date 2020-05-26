@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { withRouter, RouteComponentProps, Link as RouterLink } from 'react-router-dom';
+import { Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,10 +18,22 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    marginLeft: 3, 
+    marginRight: 3,
+  },
 }));
 
-export default function Nav() {
+function Nav(props: RouteComponentProps) {
   const classes = useStyles();
+
+  const [pageTitle, setPageTitle] = useState("HOME");
+
+  useEffect(() => {
+    props.history.listen(() => {
+      setPageTitle(window.location.pathname);
+    })
+  })
 
   return (
     <AppBar position="static">
@@ -29,10 +42,20 @@ export default function Nav() {
         <MenuIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
-        News
+        {pageTitle}
         </Typography>
-        <Button color="inherit">Login</Button>
+        <Link component={RouterLink} to="/" color="secondary" className={classes.link}>
+          Tests
+        </Link>
+        <Link component={RouterLink} to="/variants" color="secondary" className={classes.link}>
+          Variants
+        </Link>
+        <Link component={RouterLink} to="/user-variants" color="secondary" className={classes.link}>
+          User Variants
+        </Link>
       </Toolbar>
     </AppBar> 
   )
 }
+
+export default withRouter(Nav);
