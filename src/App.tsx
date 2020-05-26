@@ -6,6 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Nav from './components/Nav';
+import FeatureTest from './components/FeatureTest';
 
 export default function App() {
   return (
@@ -13,8 +14,6 @@ export default function App() {
       <div>
         <Nav />
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
             <About />
@@ -23,16 +22,12 @@ export default function App() {
             <Users />
           </Route>
           <Route path="/">
-            <Home />
+            <FeatureTest />
           </Route>
         </Switch>
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
 }
 
 function About() {
