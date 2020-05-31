@@ -1,0 +1,80 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+type Role {
+    id: Int!
+    name: String!
+}
+type FeatureTestVariant {
+    id: ID!
+    name: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    percentage: Int!
+    isControl: Boolean!
+}
+type FeatureTest {
+    id: ID!
+    name: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    startTime: DateTime!
+    endTime: DateTime!
+    variants: [FeatureTestVariant]
+}
+input FeatureTestInput {
+    name: String!
+    startTime: DateTime!
+    endTime: DateTime!
+    variants: [FeatureTestVariantInput!]
+}
+input FeatureTestVariantInput {
+    name: String!
+    percentage: Int!
+    isControl: Boolean!
+}
+type User {
+  id: Int!
+  firstname: String!
+  lastname: String!
+  roles: [Role!]
+  featureTestVariants: [FeatureTestVariant!]
+}
+type UserFeatureTestVariant {
+    id: Int!
+    userID: Int!
+    featureTestVariantID: Int!
+    user: User!
+    featureTestVariant: FeatureTestVariant!
+}
+input UserFeatureTestVariantInput {
+    userID: Int!
+    featureTestVariantID: Int!
+}
+type Query {
+  getUserById (id: Int!): User
+  users: [User!]
+  getFeatureTests: [FeatureTest!]
+  getFeatureTestById (id: Int!): FeatureTest
+  getFeatureTestVariants: [FeatureTestVariant!]
+  getUserFeatureTestVariants: [UserFeatureTestVariant!]
+}
+type Mutation {
+  createUser (
+    firstname: String!,
+    lastname: String!,
+    roleIds: [Int!]
+    ): User!
+  deleteUser(id: Int!): Boolean
+  createRole(rolename: String!): Role
+  createFeatureTest(input: FeatureTestInput!): FeatureTest
+  deleteFeatureTest(id: Int!): Boolean
+  updateFeatureTest(id: Int!, name: String, endTime: DateTime): FeatureTest
+  createFeatureTestVariant(featureTestID: Int!, featureTestVariant: FeatureTestVariantInput!): FeatureTestVariant
+  updateFeatureTestVariant(featureTestVariantID: Int!, featureTestVariant: FeatureTestVariantInput!): FeatureTestVariant
+  deleteFeatureTestVariant(featureTestVariantID: Int!): Boolean
+  createUserFeatureTestVariant(input: UserFeatureTestVariantInput!): UserFeatureTestVariant
+  updateUserFeatureTestVariant(id: Int!, userFeatureTestVariant: UserFeatureTestVariantInput!): UserFeatureTestVariant
+  deleteUserFeatureTestVariant(id: Int!): Boolean
+}
