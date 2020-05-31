@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import PageContainer from './PageContainer';
 
 export default function FeatureTest() {
   return (
-    <Container maxWidth="lg">
+    <PageContainer>
       <Typography variant="h2" gutterBottom>
-        Feature Tests live here
+        Feature Tests
       </Typography>
-    </Container>
+    </PageContainer>
   )
 }

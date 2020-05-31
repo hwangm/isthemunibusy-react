@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withRouter, RouteComponentProps, Link as RouterLink } from 'react-router-dom';
 import { Link } from '@material-ui/core';
+import { pathNameTitle } from '../constants/path';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,7 @@ function Nav(props: RouteComponentProps) {
 
   useEffect(() => {
     props.history.listen(() => {
-      setPageTitle(window.location.pathname);
+      setPageTitle(pathNameTitle[window.location.pathname]);
     })
   })
 

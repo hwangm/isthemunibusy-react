@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import PageContainer from './PageContainer';
 
 export default function UserVariant() {
   return (
-    <Container maxWidth="lg">
+    <PageContainer>
       <Typography variant="h2" gutterBottom>
-        User variants live here
+        User variants
       </Typography>
-    </Container>
+    </PageContainer>
   )
 }
