@@ -13,20 +13,18 @@ import UserVariant from './components/UserVariant';
 export default function App() {
   return (
     <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route path="/user-variants">
-            <UserVariant />
-          </Route>
-          <Route path="/variants">
-            <FeatureTestVariant />
-          </Route>
-          <Route path="/">
-            <FeatureTest />
-          </Route>
-        </Switch>
-      </div>
+      <Nav />
+      <Switch>
+        <Route path="/user-variants">
+          <UserVariant />
+        </Route>
+        <Route path="/variants">
+          <FeatureTestVariant />
+        </Route>
+        <Route path="/">
+          <FeatureTest />
+        </Route>
+      </Switch>
     </Router>
   );
 }
