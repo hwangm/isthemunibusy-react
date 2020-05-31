@@ -55,7 +55,7 @@ input UserFeatureTestVariantInput {
 type Query {
   getUserById (id: Int!): User
   users: [User!]
-  getFeatureTests: [FeatureTest!]
+  getFeatureTestsQuery: [FeatureTest!]
   getFeatureTestById (id: Int!): FeatureTest
   getFeatureTestVariants: [FeatureTestVariant!]
   getUserFeatureTestVariants: [UserFeatureTestVariant!]
