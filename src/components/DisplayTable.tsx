@@ -28,8 +28,8 @@ export default function DisplayTable(props: DisplayTableProps) {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            {props.columns.map((column) => (
-              <TableCell>{column.header}</TableCell>
+            {props.columns.map((column, i) => (
+              <TableCell key={i}>{column.header}</TableCell>
             ))}
           </TableRow>
         </TableHead>
